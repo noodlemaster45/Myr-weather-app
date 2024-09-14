@@ -1,0 +1,17 @@
+.center{
+    text-align: center;
+}
+#myVid{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+.weather{
+    border: 5px solid black;margin:auto;width:60%;padding:10px;
+    position: fixed;
+    text-align: center;
+    right: 0px;
+    backdrop-filter: blur(10px);
+}

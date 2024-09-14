@@ -1,0 +1,10 @@
+.center{
+    text-align: center;
+}
+.myVid{
+    position: fixed;
+    width: 50%;
+}
+.weather{
+    border: 5px solid black;margin:auto;width:60%;padding:10px;
+}
