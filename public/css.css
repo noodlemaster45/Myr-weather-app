@@ -7,10 +7,10 @@
     min-height: 100%;
 }
 .weather {
-    border: 5px solid black;margin:auto;width:60%;padding:10px;
+    margin:auto;width:60%;padding:10px;
     position: fixed;
     left: 20%;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     
 }
 .weather p,h1{

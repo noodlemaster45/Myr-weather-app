@@ -24,7 +24,6 @@
             <div class="autocomplete" style="width:300px;">
                 <input id="myInput" type="text" name="city" placeholder="City" value="{{ $oldInput }}">
               </div>
-              <input type="submit">
         </form>
         <h1>Current Weather in {{ $weatherData['name'] }}</h1>
         <p>Description: {{ $weatherData['weather'][0]['description'] }}</p>
@@ -72,6 +71,7 @@
                   if (currentFocus > -1) {
                     if (x) x[currentFocus].click();
                   }
+                  document.forms[0].submit();
                 }
             });
             function addActive(x) {
