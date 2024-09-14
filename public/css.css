@@ -1,6 +1,4 @@
-.center{
-    text-align: center;
-}
+
 #myVid{
     position: fixed;
     right: 0;
@@ -8,10 +6,55 @@
     min-width: 100%;
     min-height: 100%;
 }
-.weather{
+.weather {
     border: 5px solid black;margin:auto;width:60%;padding:10px;
     position: fixed;
-    text-align: center;
-    right: 0px;
+    left: 20%;
     backdrop-filter: blur(10px);
+    
 }
+.weather p,h1{
+    font-weight: bold;
+    color: white;
+}
+.autocomplete {
+    position: relative;
+    display: inline-block;
+  }
+  
+input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
+  }
+  input[type=submit]{
+    cursor: pointer;
+  }
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9;
+  }
+  .autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
