@@ -12,13 +12,14 @@ class weatherController extends Controller
         $city = $request->input('city','Ho Chi Minh City');
         $apiKey = env('OPENWEATHERMAP_API_KEY');
         $cities_list = City::pluck('name');
-        $url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric";
+        $tempMode = $request->input('tempMode',"metric");
+        $url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=$tempMode";
         try {
            
             $client = new Client();
             $response = $client->get($url);
             $data = json_decode($response->getBody(), true);
-            return view('weather', ['weatherData' => $data,'oldInput'=>$city,'cities_list'=>$cities_list]);
+            return view('weather', ['weatherData' => $data,'oldInput'=>$city,'cities_list'=>$cities_list,'temp' =>$tempMode]);
         } catch (\Exception $e) {
             // Handle any errors that occur during the API request
             return view('api_error', ['error' => $e->getMessage()]);

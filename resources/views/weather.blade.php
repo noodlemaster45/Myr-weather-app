@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/6b0fd150ee.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css.css') }}">
     <title>Weathering Heights</title>
 </head>
@@ -23,12 +23,33 @@
             <div class="autocomplete" style="width:300px;">
                 <input id="myInput" type="text" name="city" placeholder="City" value="{{ $oldInput }}">
               </div>
-        </form>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="tempMode" id="tempModeC" value="metric" 
+                @if ( $temp == "metric" )
+                    checked
+                @endif>
+                <label class="form-check-label" for="tempModeC">
+                 <p>Celsius</p>
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="tempMode" id="tempModeF" value="imperial"
+                @if ( $temp == "imperial" )
+                    checked
+                @endif>
+                <label class="form-check-label" for="tempModeF">
+                  <p>Fahrenheit</p>
+                </label>
+              </div>
+        </form>        
         <h1>Current Weather in {{ $weatherData['name'] }}</h1>
-        <p>Description: {{ $weatherData['weather'][0]['description'] }}</p>
-        <p>Temperature: {{ $weatherData['main']['temp'] }} &#8451;</p>
+        <p>Description: {{ ucfirst( $weatherData['weather'][0]['description']) }}</p>
+        @if ($temp == "metric")
+        <p>Temperature: {{ $weatherData['main']['temp'] }}&#8451; - Min: {{ $weatherData['main']['temp_min'] }}&#8451; - Max: {{ $weatherData['main']['temp_max'] }}&#8451;</p>
+        @else
+        <p>Temperature: {{ $weatherData['main']['temp'] }}&#8457; - Min: {{ $weatherData['main']['temp_min'] }}&#8457;; - Max: {{ $weatherData['main']['temp_max'] }}&#8457;</p>
+        @endif
         <p>Weather type: {{ $weatherData['weather'][0]['main'] }}</p>
-
         <script>function autocomplete(inp, arr) {
             var currentFocus;
             inp.addEventListener("input", function(e) {
