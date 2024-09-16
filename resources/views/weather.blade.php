@@ -11,13 +11,12 @@
 </head>
 <body>
     <section>
-
         <video autoplay muted loop id="myVid">
             <source src="{{ asset('videos/'.$weatherData['weather'][0]['main'].'.mp4') }}" type="video/mp4">
             </video>
     </section>
     <div class="weather">
-
+       
         <form action="{{ route('weather') }}" method="get" autocomplete="off">
             @csrf
             </select>
@@ -98,8 +97,8 @@
               closeAllLists(e.target);
           });
         }
-        var city = ["Ho Chi Minh","Hanoi","London","Tokyo","Frankfurt","Sydney","Melbourne","Bangkok","Hongkong"];
-        autocomplete(document.getElementById("myInput"), city);</script>
+        
+        autocomplete(document.getElementById("myInput"), @json($cities_list));</script>
     </div>
     
 </body>
