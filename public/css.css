@@ -15,7 +15,7 @@
 }
 .weather p,h1{
     font-weight: bold;
-    color: white;
+    color: black;
 }
 .autocomplete {
     position: relative;

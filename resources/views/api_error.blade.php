@@ -1,3 +1,4 @@
 <div>
-    <!-- Life is available only in the present moment. - Thich Nhat Hanh -->
+   {{ $error }}
+   <a href="/weather"><button>go back</button></a>
 </div>
