@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/6b0fd150ee.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css.css') }}">
+    <script type="text/javascript" src="{{ asset('js.js') }}"></script>
     <title>Weathering Heights</title>
 </head>
 <body>
@@ -15,40 +17,27 @@
             <source src="{{ asset('videos/'.$weatherData['weather'][0]['main'].'.mp4') }}" type="video/mp4">
             </video>
     </section>
-    <div class="weather">
-       
+    <div>
+      
+      <div id="minimize">
+        <i class="fa-solid fa-minimize"></i>
+       </div>
+      <div class="weather transform">
+        
         <form action="{{ route('weather') }}" method="get" autocomplete="off">
             @csrf
             </select>
             <div class="autocomplete" style="width:300px;">
                 <input id="myInput" type="text" name="city" placeholder="City" value="{{ $oldInput }}">
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="tempMode" id="tempModeC" value="metric" 
-                @if ( $temp == "metric" )
-                    checked
-                @endif>
-                <label class="form-check-label" for="tempModeC">
-                 <p>Celsius</p>
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="tempMode" id="tempModeF" value="imperial"
-                @if ( $temp == "imperial" )
-                    checked
-                @endif>
-                <label class="form-check-label" for="tempModeF">
-                  <p>Fahrenheit</p>
-                </label>
-              </div>
         </form>        
         <h1>Current Weather in {{ $weatherData['name'] }}</h1>
         <p>Description: {{ ucfirst( $weatherData['weather'][0]['description']) }}</p>
-        @if ($temp == "metric")
-        <p>Temperature: {{ $weatherData['main']['temp'] }}&#8451; - Min: {{ $weatherData['main']['temp_min'] }}&#8451; - Max: {{ $weatherData['main']['temp_max'] }}&#8451;</p>
-        @else
-        <p>Temperature: {{ $weatherData['main']['temp'] }}&#8457; - Min: {{ $weatherData['main']['temp_min'] }}&#8457;; - Max: {{ $weatherData['main']['temp_max'] }}&#8457;</p>
-        @endif
+        
+        <p>Temperature (Celsius): {{ $weatherData['main']['temp'] }}&#8451; - Min: {{ $weatherData['main']['temp_min'] }}&#8451; - Max: {{ $weatherData['main']['temp_max'] }}&#8451;</p>
+        
+        <p>Temperature (Fahrenheit): {{ $weatherData['main']['temp']*9/5 + 32 }}&#8457; - Min: {{ $weatherData['main']['temp_min']*9/5 + 32 }}&#8457;  - Max: {{ $weatherData['main']['temp_max']*9/5 + 32 }}&#8457;</p>
+        
         <p>Weather type: {{ $weatherData['weather'][0]['main'] }}</p>
         <script>function autocomplete(inp, arr) {
             var currentFocus;
@@ -69,14 +58,14 @@
                     b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
                     b.innerHTML += arr[i].substr(val.length);
                     b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                        b.addEventListener("click", function(e) {
+                    b.addEventListener("click", function(e) {
                         inp.value = this.getElementsByTagName("input")[0].value;
                         closeAllLists();
                     });
                     a.appendChild(b);
                   }
                 }
-            });
+              });
             inp.addEventListener("keydown", function(e) {
                 var x = document.getElementById(this.id + "autocomplete-list");
                 if (x) x = x.getElementsByTagName("div");
@@ -121,6 +110,7 @@
         
         autocomplete(document.getElementById("myInput"), @json($cities_list));</script>
     </div>
+  </div>
     
 </body>
 </html>
