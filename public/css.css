@@ -11,7 +11,26 @@
     position: fixed;
     left: 20%;
     backdrop-filter: blur(20px);
-    
+    display: block;
+}
+.transform{
+  transition: all 2s ease;
+}
+.weather-minimize{
+  height: 10%;
+  width: 10%;
+}
+#minimize{
+  text-align: center;
+  width: 25px;
+  height: 10%;
+  position: relative;
+  margin: 0 auto;
+  transition: 0.3s;
+  cursor: pointer;
+}
+#minimize:hover{
+  background-color: grey;
 }
 .weather p,h1{
     font-weight: bold;
