@@ -12,6 +12,7 @@
     left: 20%;
     backdrop-filter: blur(20px);
     display: block;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 .transform{
   transition: all 2s ease;
@@ -77,3 +78,16 @@ input {
     background-color: DodgerBlue !important;
     color: #ffffff;
   }
+.hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+.button{
+  background-color: white;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: cyan;
+}

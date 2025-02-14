@@ -20,9 +20,10 @@
     <div>
       
       <div id="minimize">
-        <i class="fa-solid fa-minimize"></i>
+        
+        <button onclick="hideDiv()" class="button"><i id="buttonIcon" class="fa-solid fa-minimize"></i></button>
        </div>
-      <div class="weather transform">
+      <div class="weather box" id="content">
         
         <form action="{{ route('weather') }}" method="get" autocomplete="off">
             @csrf
@@ -37,8 +38,10 @@
         <p>Temperature (Celsius): {{ $weatherData['main']['temp'] }}&#8451; - Min: {{ $weatherData['main']['temp_min'] }}&#8451; - Max: {{ $weatherData['main']['temp_max'] }}&#8451;</p>
         
         <p>Temperature (Fahrenheit): {{ $weatherData['main']['temp']*9/5 + 32 }}&#8457; - Min: {{ $weatherData['main']['temp_min']*9/5 + 32 }}&#8457;  - Max: {{ $weatherData['main']['temp_max']*9/5 + 32 }}&#8457;</p>
-        
-        <p>Weather type: {{ $weatherData['weather'][0]['main'] }}</p>
+
+        <h2>Forecast</h2>
+
+        <p></p>
         <script>function autocomplete(inp, arr) {
             var currentFocus;
             inp.addEventListener("input", function(e) {
@@ -108,7 +111,10 @@
           });
         }
         
-        autocomplete(document.getElementById("myInput"), @json($cities_list));</script>
+        autocomplete(document.getElementById("myInput"), @json($cities_list));
+        function hideDiv(){
+          document.getElementById('content').classList.toggle('hidden');
+        }</script>
     </div>
   </div>
     
