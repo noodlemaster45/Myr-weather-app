@@ -41,7 +41,14 @@
 
         <h2>Forecast</h2>
 
-        <p></p>
+        <div class="container" style="display: grid;grid-template-columns:repeat(5,1fr);gap:10px">
+          @for ($i = 0; $i < 5; $i++)
+          <div class="column">
+            <p>{{ $forecastData['list'][$i]['dt_txt'] }}</p> 
+            <p>{{ ucfirst( $forecastData['list'][$i]['weather'][0]['description']) }}</p>
+          </div>
+          @endfor
+         </div>
         <script>function autocomplete(inp, arr) {
             var currentFocus;
             inp.addEventListener("input", function(e) {
