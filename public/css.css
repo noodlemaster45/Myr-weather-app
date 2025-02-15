@@ -95,4 +95,12 @@ input {
   padding: 20px;
   text-align: center;
   border: 2px solid black;
+  transition-duration: 0.4s;
+  cursor: default;
+  height: 175px;
+  width: 150;
+}
+.column:hover{
+  background-color: white;
+  transform: translateY(-15%);
 }
