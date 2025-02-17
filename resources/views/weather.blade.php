@@ -43,7 +43,7 @@
 
         <div class="container" style="display: grid;grid-template-columns:repeat(5,1fr);gap:10px">
           @for ($i = 0; $i < 5; $i++)
-          <div class="column" id="{{  $forecastData['list'][$i]['weather'][0]['main']}}">
+          <div class="column" name="{{  $forecastData['list'][$i]['weather'][0]['main']}}" id = {{ $i }}>
             <p>{{ $forecastData['list'][$i]['dt_txt'] }}</p> 
             <p>{{ ucfirst( $forecastData['list'][$i]['weather'][0]['description']) }}</p>
           </div>
@@ -131,11 +131,12 @@ $(".column").each(function () {
     $(".column").hover(
         function () {
             let div = $(this);  
-            var imgPath = "{{ asset('icons/') }}" + "/" + div.attr("id")+".jpg"; 
+            var imgPath = "{{ asset('icons/') }}" + "/" + div.attr("name")+".png"; 
             let condition = $(this).data("condition") === true;
-            
+            let tempCMin = forecastData.list[div.attr('id')].main.temp_min;
+            let tempFMin = tempCMin*9/5+32
             if (!$(this).data("toggled")) {
-                $(this).html('<img src="'+imgPath+'" width="100%" height="100">').data("toggled", true);
+                $(this).html('<img src="'+imgPath+'" width="100%" height="100">  <br>  <p>Min: '+tempCMin+'&#8451; '+tempFMin.toFixed(2)+' &#8457;</p> ').data("toggled", true);
             }
         },
         function () {

@@ -15,7 +15,7 @@ class weatherController extends Controller
         $cities_list = City::pluck('name');
         $tempMode = $request->input('tempMode',"metric");
         $weather = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric";
-        $forecast = "https://api.openweathermap.org/data/2.5/forecast?q=$city&appid=$apiKey";
+        $forecast = "https://api.openweathermap.org/data/2.5/forecast?q=$city&appid=$apiKey&units=metric";
         try {
            
             $client = new Client();

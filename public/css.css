@@ -97,8 +97,8 @@ input {
   border: 2px solid black;
   transition-duration: 0.4s;
   cursor: default;
-  height: 175px;
-  width: 150;
+  height: 200px;
+  width: 175;
 }
 .column:hover{
   background-color: white;
